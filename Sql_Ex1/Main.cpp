@@ -5,13 +5,12 @@
 /*   Exercise: 01										    */
 /*   Lecturer: Roi Krakovski						        */
 /* ======================================================== */
-/* Purpose: This Program was written as part of first 		*/
-/* assgnment in Databases course. it receives SQL query		*/
-/* string assgnment in Databases course. it receives SQL    */
-/* query string input, analyzes it's correctness and gives 	*/
+/* Purpose: This Program was written as part of the first   */
+/* assignment in Databases course. It receives SQL query	*/
+/* input (string), analyzes it's correctness and gives      */
 /* appropriate feedback, including list of bugs and errors, */
-/* their location, when it's relevant, and suggestions for  */
-/* repar.													*/		
+/* their location (when it's relevant), and suggestions for */
+/* repair.													*/		
 /* ======================================================== */
 
 #include <iostream>
@@ -67,7 +66,7 @@ int main(void)
 	//Missing ;
 	test[25] = "SELECT Customers.Name, Orders.Price FROM Customers, Orders WHERE Customers.Name = Orders.CustomerName AND Orders.Price>1000";
 	//Wrong attribute name, wrong sign in rightmost condition
-	test[26] = "SELECT Customers.CustomerName FROM Customers WHERE Customers.Age = ”25;";
+	test[26] = "SELECT Customers.CustomerName FROM Customers WHERE Customers.Age = â€25;";
 	//Missing ; and wrong table name in condition "Customer.Name".
 	test[27] = "SELECT Customers.Name, Orders.Price FROM Customers, Orders WHERE Customer.Name = Orders.CustomerName AND Orders.Price>1000 OR Orders.Price<1000";
 	//Wrong attribute in attributes list  - CustomerID and wrong attribute in condition
@@ -117,38 +116,3 @@ int main(void)
 
 	return 0;
 }
-
-	//TODO ==============================================================================================
-	//1. Currently the code doesn't recognize Correctly if Parenthesis are Tight to the 
-	// WHERE keyword or other logical keywords (AND, OR) -  "... where(....) " - isn't recognized
-	// with the correct error.
-
-	//2. Advanced errors in Conditions, like Missing or extra paranteses,
-	// or operands surrounded with parantesesnot inside complex conditions aren't recognized Precisely.
-	
-	//3. Queries with attributes selected from incorrect tables, aren't currently handled as mistakes.
-	//===================================================================================================
-
-	//======================= Examples for the above problems ===========================================
-
-	//	//*** Not identifieng (operands)
-	//test[30] = "SELECT DISTINCT * FROM Customers, Diners, Orders\n WHERE((((5) >= ('sdfsfdf'))));";
-	////*** Wrong Parenthesis right side
-	//test[31] = "SELECT Customers.Name,Orders.Price FROM Customers,Orders WHERE (Customers.Name=Orders.CustomerName) OR (Orders.Price>1000;";
-	////*** Wrong Parenthesis right side and wrong attribue name
-	//test[32] = "SELECT Customers.CustomerID,Orders.Price FROM Customers,Orders WHERE (Customers.CustomerName=Orders.CustomerName) OR (Orders.Price>1000;";
-	////*** Wrong Parenthesis right side and wrong attribue name
-	//test[33] = "SELECT Customers.Color,Orders.Price FROM Customers,Orders WHERE (Customers.Name=Orders.CustomerName) OR (Orders.Price>1000;";
-	////*** Wrong Parenthesis right side and wrong attribue name
-	//test[34] = "SELECT Customers.Color,Orders.Price FROM Customers,Orders WHERE(Customers.Name=Orders.CustomerName) OR(Orders.Price>1000);";
-	////*** Wrong Parenthesis + col calculation!
-	//test[35] = "SELECT Customers.Name,Orders.Price FROM Customers,Orders WHERE ((Customers.CustomerName  =  Orders.CustomerName) AND (Orders.Price    >    1000) OR (Orders.Price    < 100));";
-	////*** Wrong Parenthesis + too many operators
-	//test[36] = "SELECT Customers.CustomerName, Orders.Price FROM Customers, Orders WHERE(Customers.CustomerName = Orders.CustomerName) AND(Orders.Price>1000 OR Orders.Price<100);";
-	
-	////Shouldn't pass but its passing (because we want something from costumers but not mention it as table).
-	////Validate that conditions related to the attributes written in the begining - 
-	////if i write column name mistakely in FROM, i can't use it in WHERE, etc with tables.
-	////test[36] = "SELECT Customers.Name FROM Orders WHERE Customers.Age=25;";
-	////test[37] = "SELECT Customers.CustomerName FROM Orders WHERE Customers.Age = 25;";
-	//===================================================================================================
