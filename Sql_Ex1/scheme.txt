@@ -1,0 +1,3 @@
+Customers(Name:STRING, Age:INTEGER)
+Orders(CustomerName:STRING, CustomerAge:INTEGRER, Product:STRING, Price:INTEGER)
+Diners(size:INTEGER)
