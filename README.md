@@ -1,8 +1,8 @@
-# SQL-Ex1
-First project(Exercise) in SQL course
+# SQL-Parser
+This project is a very basic SQL parser.
 
 ## **Purpose:**
-This Program was written as part of the first assignment in Databases course. 
+This Program was written as part of the first assignment in Databases course (SQL).
 It receives SQL query input (string), analyzes it's correctness and gives
 appropriate feedback, including a list of bugs and errors, their location, 
 (when it's relevant) and suggestions for repair.		
